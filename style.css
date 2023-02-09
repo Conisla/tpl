@@ -1,0 +1,73 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+body
+{
+    background-image: url('img/Garage.webp');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+h1
+{
+    color: rgb(230, 229, 235);
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.418);
+    backdrop-filter: blur(6.9px);
+    -webkit-backdrop-filter: blur(6.9px);
+    border: 1px solid rgba(255, 255, 255, 0.144);
+    border-radius: 0px 0px 20px 0px;
+    width: 300px;
+    padding: 1vh;
+    margin-bottom: 10%;
+}
+
+.return
+{
+    font-size: 2rem;
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    position: absolute;
+    top: 1%;
+    left: 50%;
+    display: block;
+    background-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.418);
+    backdrop-filter: blur(6.9px);
+    -webkit-backdrop-filter: blur(6.9px);
+    border: 1px solid rgba(255, 255, 255, 0.144);
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    border-radius: 100%;
+}
+.container
+{
+    display: flex;
+    justify-content: space-around
+}
+
+.linkBox
+{
+    display: flex;
+    width: 250px;
+    height: 250px;
+    border-radius: 25px;
+    background-color: rgba(255, 255, 255, 0.2);
+    justify-content: space-around;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.418);
+    backdrop-filter: blur(6.9px);
+    -webkit-backdrop-filter: blur(6.9px);
+    border: 1px solid rgba(255, 255, 255, 0.144);
+}
+
+.linkBox img
+{
+    z-index: 2;
+    align-self: center;
+    width: 200px;
+    height: 200px;
+}
