@@ -6,7 +6,7 @@
 const URL = "https://teachablemachine.withgoogle.com/models/9DOxzlLVe/";
 
 let model, webcam, labelContainer, maxPredictions;
-
+$('.loadPred').hide()
 // Load the image model and setup the webcam 
 async function init() {
     const modelURL = URL + "model.json";
@@ -44,7 +44,6 @@ async function loop() {
     await predict();
     window.requestAnimationFrame(loop);
 }
-
 // run the webcam image through the image model
 async function predict() {
     // predict can take in an image, video or canvas html element
@@ -55,3 +54,54 @@ async function predict() {
         labelContainer.childNodes[i].innerHTML = classPrediction;
     }
 }
+
+let imageSelector = document.getElementById('image-selector');
+
+let selectedImage = document.getElementById('selected-image');
+
+let predictionsList =document.getElementById('prediction-list');
+
+let imageLoaded = false;
+let modelLoaded = false
+let mod;
+
+document.addEventListener('DOMContentLoaded', async function(){
+    const modelURL = URL + "model.json";
+    const metadataURL = URL + "metadata.json";
+    console.log('Chargement du modèle...');
+    mod = await tmImage.load(modelURL, metadataURL);
+    $('.progress-bar').hide();
+    modelLoaded = true
+    console.log('Modèle chargé')
+    maxPredictions = mod.getTotalClasses();
+})
+
+function loadingImg(){
+    imageLoaded = false;
+    let reader = new FileReader();
+    reader.onload = function(){
+        let dataURL = reader.result;
+        selectedImage.src = dataURL;
+        predictionsList.innerHTML = '';
+        imageLoaded = true;
+    }
+    let file = imageSelector.files[0];
+    reader.readAsDataURL(file);
+}
+
+imageSelector.addEventListener('change', () => loadingImg());
+
+async function imgPredict()
+{
+    $('.loadPred').show()
+    if (!modelLoaded) { alert("The model must be loaded first"); return; }
+	if (!imageLoaded) { alert("Please select an image first"); return; }
+    const img = selectedImage;
+
+    const pred = await mod.predict(selectedImage);
+    $('.loadPred').hide()
+    pred.forEach(function(p){
+        predictionsList.innerHTML += '<li>'+p.className+':'+p.probability.toFixed(3)+'</li>';
+    })
+}
+

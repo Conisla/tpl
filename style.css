@@ -47,7 +47,12 @@ h1
 .container
 {
     display: flex;
-    justify-content: space-around
+    justify-content: space-around;
+}
+#selected-image{
+    margin: 10% 0;
+    width: 227px;
+    height: 227px;
 }
 
 .linkBox
@@ -82,4 +87,30 @@ h1
     border-radius: 25px;
     width: 80vw;
     height: 70vh;
+    padding: 2% 5%;
+    display: flex;
+}
+
+.imgBox{
+    display: flex;
+    flex-direction: column;
+    margin: 5% 5%;
+}
+
+.monitorBox{
+    display: flex;
+    flex-direction: column;
+    margin: 5% 5%;
+
+    width: 50%;
+}
+
+.imgBox button{
+    width: 5rem;
+    height: 1.75rem;
+    align-self: center;
+}
+
+.monitorBox h2{
+    align-self: center;
 }
